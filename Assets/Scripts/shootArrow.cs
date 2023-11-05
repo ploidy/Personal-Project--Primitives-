@@ -4,19 +4,17 @@ using UnityEngine;
 
 public class shootArrow : MonoBehaviour
 {
-    Vector3 direction;
     public float speed;
     public float Lifespan;
-    private Rigidbody arrowRB;
+    //private Rigidbody arrowRB;
+    public AudioClip arrowSound;
+    private AudioSource arrowAudio;
     // Start is called before the first frame update
-    void Awake() 
-    {
-        arrowRB = GetComponent<Rigidbody>();
-    }
     
     void Start()
     {
-
+        //arrowRB = GetComponent<Rigidbody>();
+        arrowAudio = GetComponent<AudioSource>();
     }
     
 
@@ -24,8 +22,13 @@ public class shootArrow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //fire arrow in 'forward' direction and destroy after Lifespan seconds
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
-        Destroy(gameObject, Lifespan);
+                
+        //play arrow audio on fire
+        arrowAudio.PlayOneShot(arrowSound, 0.6f);
 
+        //destory arrow after Lifespan
+        Destroy(gameObject, Lifespan);
     }
 }
