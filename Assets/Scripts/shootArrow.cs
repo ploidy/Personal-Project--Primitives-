@@ -22,10 +22,10 @@ public class shootArrow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //fire arrow in 'forward' direction and destroy after Lifespan seconds
+        //fire arrow in 'forward' direction and destroy after Lifespan seconds **NOTE: consider firing at nearest enemey instead
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
                 
-        //play arrow audio on fire
+        //play arrow audio on fire **NOTE: sound cancels if arrow destroyed. Fix later. 
         arrowAudio.PlayOneShot(arrowSound, 0.6f);
 
         //destory arrow after Lifespan

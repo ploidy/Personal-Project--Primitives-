@@ -8,16 +8,17 @@ public class wpnArrow : MonoBehaviour
     public GameObject arrowPrefab;
     float timer;
     public Transform arrowDirection;
-    PlayerController playerController;
+    //PlayerController playerController;
     // Start is called before the first frame update
     void Start()
     {
-        playerController = GetComponentInParent<PlayerController>();
+        //playerController = GetComponentInParent<PlayerController>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //sets timer for firing arrows
         if(timer < timeToAttack)
         {
             timer += Time.deltaTime;
@@ -27,9 +28,9 @@ public class wpnArrow : MonoBehaviour
         timer = 0;
         SpawnArrow();
     }
-    void SpawnArrow()
+    void SpawnArrow() //spawns arrow 
     {
-        GameObject spawnArrow = Instantiate(arrowPrefab, arrowDirection.position, arrowDirection.rotation);
+        Instantiate(arrowPrefab, arrowDirection.position, arrowDirection.rotation);
         
         
 

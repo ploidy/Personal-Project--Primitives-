@@ -24,6 +24,7 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //sets timer for enemies to spawn. **Note** revisit to have waves of enemies instead. 
         timer -= Time.deltaTime;
         if (timer < 0f)
         {
@@ -31,7 +32,7 @@ public class SpawnManager : MonoBehaviour
             timer = spawnTimer;
         }
     }
-    void SpawnEnemy()
+    void SpawnEnemy() //spawns enemies **NOTE** re-visit to ensure enemies spawn outside of cameraFOV
     {
         //float camHeight = 2f * camFOV.orthographicSize + 10;
         //float camWidth = camFOV.orthographicSize * camFOV.aspect + 10;

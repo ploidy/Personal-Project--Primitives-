@@ -19,11 +19,13 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Enemies find player direction and move towards player ** Note - fix enemies overshooting player location
         Vector3 lookDirection = (player.transform.position - transform.position).normalized;
 
         enemyRb.AddForce(lookDirection * speed);
 
-        if (transform.position.x < -mapRange)
+       // stops Enemies moving out of bounds
+       if (transform.position.x < -mapRange)
        {
         transform.position = new Vector3(-mapRange, transform.position.y, transform.position.z);
        }
@@ -39,7 +41,9 @@ public class EnemyController : MonoBehaviour
        {
         transform.position = new Vector3(transform.position.x, transform.position.y, mapRange);
        }
-        if (speed > 5.0f)
+
+        // attempt to stop Enemies moving too fast
+       if (speed > 5.0f)
         {
             speed = 5.0f;
         }
