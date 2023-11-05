@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    //public float horizontalInput;
-   // public float verticalInput;
+    
     public float speed = 20.0f;
-    //public float rotationSpeed; 
     public Vector3 forward;
     Vector3 right;
+    public float mapRange = 245;
 
     // Start is called before the first frame update
     void Start()
@@ -23,13 +22,26 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
        if (Input.anyKey)
        {
             Move();
        }
-
-
+       if (transform.position.x < -mapRange)
+       {
+        transform.position = new Vector3(-mapRange, transform.position.y, transform.position.z);
+       }
+       if (transform.position.x > mapRange)
+       {
+        transform.position = new Vector3(mapRange, transform.position.y, transform.position.z);
+       }
+       if (transform.position.z < -mapRange)
+       {
+        transform.position = new Vector3(transform.position.x, transform.position.y, -mapRange);
+       }
+       if (transform.position.z > mapRange)
+       {
+        transform.position = new Vector3(transform.position.x, transform.position.y, mapRange);
+       }
     }
     void Move()
     {

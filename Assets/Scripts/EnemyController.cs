@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public float speed = 3.0f;
+    public float speed = 5.0f;
     private Rigidbody enemyRb;
     private GameObject player;
+    public float mapRange = 245f;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,25 @@ public class EnemyController : MonoBehaviour
 
         enemyRb.AddForce(lookDirection * speed);
 
-        
+        if (transform.position.x < -mapRange)
+       {
+        transform.position = new Vector3(-mapRange, transform.position.y, transform.position.z);
+       }
+       if (transform.position.x > mapRange)
+       {
+        transform.position = new Vector3(mapRange, transform.position.y, transform.position.z);
+       }
+       if (transform.position.z < -mapRange)
+       {
+        transform.position = new Vector3(transform.position.x, transform.position.y, -mapRange);
+       }
+       if (transform.position.z > mapRange)
+       {
+        transform.position = new Vector3(transform.position.x, transform.position.y, mapRange);
+       }
+        if (speed > 5.0f)
+        {
+            speed = 5.0f;
+        }
     }
 }

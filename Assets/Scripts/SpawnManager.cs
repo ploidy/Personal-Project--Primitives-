@@ -7,15 +7,15 @@ public class SpawnManager : MonoBehaviour
 {
     public GameObject enemyPrefab;
     public GameObject player;
-    [SerializeField] Vector3 spawnRange; 
+    public float spawnRange = 50f; 
     public float spawnTimer;
     float timer;
-    public Camera camFOV;
+    //public Camera camFOV;
 
     // Start is called before the first frame update
     void Start()
     {
-     camFOV = Camera.main;
+     //camFOV = Camera.main;
      
     
 
@@ -35,8 +35,8 @@ public class SpawnManager : MonoBehaviour
     {
         //float camHeight = 2f * camFOV.orthographicSize + 10;
         //float camWidth = camFOV.orthographicSize * camFOV.aspect + 10;
-        float spawnPosX = player.transform.position.x + Random.Range(-spawnRange.x, spawnRange.x);
-        float spawnPosZ = player.transform.position.z + Random.Range(-spawnRange.z, spawnRange.z);
+        float spawnPosX = player.transform.position.x + Random.Range(-spawnRange, spawnRange); 
+        float spawnPosZ = player.transform.position.z + Random.Range(-spawnRange, spawnRange); 
 
         Vector3 position = new Vector3(spawnPosX,1.6f,spawnPosZ);
 
