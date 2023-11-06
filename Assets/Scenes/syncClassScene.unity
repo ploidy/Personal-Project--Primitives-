@@ -225,7 +225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40a99c205f40576488cefb9d69a07d6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToAttack: 2
+  timeToAttack: 1.5
   arrowPrefab: {fileID: 7651639319005485761, guid: 462dcb6fa40c4a540a13eed21ffd90b7, type: 3}
   arrowDirection: {fileID: 698120806}
   arrowSound: {fileID: 8300000, guid: b48ab7535c0a91540ba4819dd8738618, type: 3}
