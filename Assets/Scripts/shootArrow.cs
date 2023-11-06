@@ -7,14 +7,14 @@ public class shootArrow : MonoBehaviour
     public float speed;
     public float Lifespan;
     //private Rigidbody arrowRB;
-    public AudioClip arrowSound;
-    private AudioSource arrowAudio;
+    //public AudioClip arrowSound;
+    //private AudioSource arrowAudio;
     // Start is called before the first frame update
     
     void Start()
     {
         //arrowRB = GetComponent<Rigidbody>();
-        arrowAudio = GetComponent<AudioSource>();
+        //arrowAudio = GetComponent<AudioSource>();
     }
     
 
@@ -26,7 +26,7 @@ public class shootArrow : MonoBehaviour
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
                 
         //play arrow audio on fire **NOTE: sound cancels if arrow destroyed. Fix later. 
-        arrowAudio.PlayOneShot(arrowSound, 0.6f);
+        //arrowAudio.PlayOneShot(arrowSound, 0.6f);
 
         //destory arrow after Lifespan
         Destroy(gameObject, Lifespan);

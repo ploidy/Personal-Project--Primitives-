@@ -8,11 +8,17 @@ public class wpnArrow : MonoBehaviour
     public GameObject arrowPrefab;
     float timer;
     public Transform arrowDirection;
+    public AudioClip arrowSound;
+    private AudioSource arrowAudio;
+
+    
     //PlayerController playerController;
     // Start is called before the first frame update
     void Start()
     {
         //playerController = GetComponentInParent<PlayerController>();
+        arrowAudio = GetComponent<AudioSource>();
+
     }
 
     // Update is called once per frame
@@ -31,6 +37,8 @@ public class wpnArrow : MonoBehaviour
     void SpawnArrow() //spawns arrow 
     {
         Instantiate(arrowPrefab, arrowDirection.position, arrowDirection.rotation);
+        arrowAudio.PlayOneShot(arrowSound, 0.6f);
+
         
         
 
