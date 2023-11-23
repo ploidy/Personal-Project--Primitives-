@@ -8,7 +8,9 @@ public class EnemyController : MonoBehaviour
     private Rigidbody enemyRb;
     private GameObject player;
     public float mapRange = 245f;
-
+    public Transform target;
+    public float rotationSpeed = 60.0f;
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -21,8 +23,11 @@ public class EnemyController : MonoBehaviour
     {
         //Enemies find player direction and move towards player ** Note - fix enemies overshooting player location
         Vector3 lookDirection = (player.transform.position - transform.position).normalized;
-
-        enemyRb.AddForce(lookDirection * speed);
+        
+        Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed);
+        transform.position += lookDirection * speed * Time.deltaTime;
+        //enemyRb.AddForce(lookDirection * speed);
 
        // stops Enemies moving out of bounds
        if (transform.position.x < -mapRange)
@@ -42,10 +47,6 @@ public class EnemyController : MonoBehaviour
         transform.position = new Vector3(transform.position.x, transform.position.y, mapRange);
        }
 
-        // attempt to stop Enemies moving too fast
-       if (speed > 5.0f)
-        {
-            speed = 5.0f;
-        }
+
     }
 }
