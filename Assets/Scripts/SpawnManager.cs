@@ -34,17 +34,36 @@ public class SpawnManager : MonoBehaviour
     }
     void SpawnEnemy() //spawns enemies **NOTE** re-visit to ensure enemies spawn outside of cameraFOV
     {
+        Vector3 position = RandomPosition();
+        position += player.transform.position;
         //float camHeight = 2f * camFOV.orthographicSize + 10;
         //float camWidth = camFOV.orthographicSize * camFOV.aspect + 10;
-        float spawnPosX = player.transform.position.x + Random.Range(-spawnRange, spawnRange); 
-        float spawnPosZ = player.transform.position.z + Random.Range(-spawnRange, spawnRange); 
+        //float spawnPosX = player.transform.position.x + Random.Range(-spawnRange, spawnRange); 
+        //float spawnPosZ = player.transform.position.z + Random.Range(-spawnRange, spawnRange); 
 
-        Vector3 position = new Vector3(spawnPosX,1.6f,spawnPosZ);
+        //Vector3 position = new Vector3(spawnPosX,1.6f,spawnPosZ);
 
         GameObject newEnemy = Instantiate(enemyPrefab);
         newEnemy.transform.position = position;
         
     }
- 
+    private Vector3 RandomPosition()
+    {
+        Vector3 position = new Vector3();
 
+        float f = Random.value > 0.5f ? -1f : 1f;
+        if (Random.value > 0.5f)
+        {
+            position.x = Random.Range(-spawnRange, spawnRange);
+            position.z = spawnRange * f;
+        }
+        else 
+        {
+            position.z = Random.Range(-spawnRange, spawnRange);
+            position.x = spawnRange * f;
+        }
+         position.y = 0;
+
+         return position;
+    }
 }

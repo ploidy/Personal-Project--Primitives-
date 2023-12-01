@@ -12,11 +12,13 @@ public class PlayerController : MonoBehaviour
     private AudioSource playerAudio;
     public AudioClip hitSound;
     private Rigidbody playerRb;
+    public float obstacleBounce = 5.0f;
 
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
+        
         playerAudio = GetComponent<AudioSource>();
         
         //sets 'forward' & right to camera view
@@ -54,13 +56,15 @@ public class PlayerController : MonoBehaviour
     }
     void Move() //moves player on isometric plane
     {
-        Vector3 direction = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         Vector3 upMovement = forward * speed * Time.deltaTime * Input.GetAxis("Vertical");
         Vector3 rightMovement = right * speed * Time.deltaTime * Input.GetAxis("Horizontal");
         Vector3 heading = Vector3.Normalize(upMovement + rightMovement);
         transform.forward = heading;
         transform.position += rightMovement;
         transform.position += upMovement;
+        
+        
     }
     private void OnCollisionEnter(Collision collision) //play sound if player hit by enemy
     {
@@ -69,5 +73,12 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Player Hit!");
             playerAudio.PlayOneShot(hitSound, 0.6f);
         }
+   
+        if(collision.gameObject.CompareTag("Obstacle"))
+        {
+            //Vector3 awayFromObstacle = transform.position - collision.gameObject.transform.position;
+            //playerRb.AddForce(awayFromObstacle * obstacleBounce, ForceMode.Impulse);
+            
+       }
     }
 }
