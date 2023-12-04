@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    public GameObject enemyPrefab;
+    public GameObject[] enemyPrefab;
     public GameObject player;
     public float spawnRange = 50f; 
     public float spawnTimer;
@@ -32,22 +32,18 @@ public class SpawnManager : MonoBehaviour
             timer = spawnTimer;
         }
     }
-    void SpawnEnemy() //spawns enemies **NOTE** re-visit to ensure enemies spawn outside of cameraFOV
+    void SpawnEnemy() //spawns enemies 
     {
+        
         Vector3 position = RandomPosition();
         position += player.transform.position;
-        //float camHeight = 2f * camFOV.orthographicSize + 10;
-        //float camWidth = camFOV.orthographicSize * camFOV.aspect + 10;
-        //float spawnPosX = player.transform.position.x + Random.Range(-spawnRange, spawnRange); 
-        //float spawnPosZ = player.transform.position.z + Random.Range(-spawnRange, spawnRange); 
 
-        //Vector3 position = new Vector3(spawnPosX,1.6f,spawnPosZ);
-
-        GameObject newEnemy = Instantiate(enemyPrefab);
+        int randomEnemy = Random.Range(0, enemyPrefab.Length);
+        GameObject newEnemy = Instantiate(enemyPrefab[randomEnemy]);
         newEnemy.transform.position = position;
         
     }
-    private Vector3 RandomPosition()
+    private Vector3 RandomPosition() //generate spawn position outside FOV
     {
         Vector3 position = new Vector3();
 

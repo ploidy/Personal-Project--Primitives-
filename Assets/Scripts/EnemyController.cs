@@ -2,20 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class EnemyController : MonoBehaviour
 {
-    public float speed = 5.0f;
+    public float speed;
     private Rigidbody enemyRb;
-    private GameObject player;
+    public GameObject player;
     public float mapRange = 245f;
-    public Transform target;
+    //public Transform target;
     public float rotationSpeed = 60.0f;
+    //[SerializeField] int currentLives = 1;
+    //[SerializeField] int damage = 1;
+    public int scoreValue;
+    private GameManager gameManager;
+
+    
    
     // Start is called before the first frame update
     void Start()
     {
         enemyRb = GetComponent<Rigidbody>();
         player = GameObject.Find("Player");
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -49,4 +57,14 @@ public class EnemyController : MonoBehaviour
 
 
     }
+    private void OnCollisionEnter(Collision collision) 
+    {
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            Destroy(gameObject);
+            gameManager.UpdateScore(scoreValue);
+        }
+    }
+
+
 }

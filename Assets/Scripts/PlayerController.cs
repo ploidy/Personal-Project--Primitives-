@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.Networking.Types;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,14 +13,18 @@ public class PlayerController : MonoBehaviour
     public float mapRange = 245;
     private AudioSource playerAudio;
     public AudioClip hitSound;
-    private Rigidbody playerRb;
+    //private Rigidbody playerRb;
     public float obstacleBounce = 5.0f;
+    public int maxLives = 3;
+    public int currentLives = 3;
+    [SerializeField] int damage = 1;
+    [SerializeField] TextMeshProUGUI livesText;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        playerRb = GetComponent<Rigidbody>();
-        
+        //playerRb = GetComponent<Rigidbody>();
         playerAudio = GetComponent<AudioSource>();
         
         //sets 'forward' & right to camera view
@@ -32,6 +38,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       livesText.SetText("Lives: " + currentLives);
        if (Input.anyKey) //any input invokes Move method
        {
             Move();
@@ -53,6 +60,11 @@ public class PlayerController : MonoBehaviour
        {
         transform.position = new Vector3(transform.position.x, transform.position.y, mapRange);
        }
+       if(currentLives < 1)
+        {
+        Debug.Log("You have died");
+        Destroy(gameObject);
+        }
     }
     void Move() //moves player on isometric plane
     {
@@ -71,14 +83,13 @@ public class PlayerController : MonoBehaviour
         if(collision.gameObject.CompareTag("Enemy"))
         {
             Debug.Log("Player Hit!");
-            playerAudio.PlayOneShot(hitSound, 0.6f);
-        }
-   
-        if(collision.gameObject.CompareTag("Obstacle"))
-        {
-            //Vector3 awayFromObstacle = transform.position - collision.gameObject.transform.position;
-            //playerRb.AddForce(awayFromObstacle * obstacleBounce, ForceMode.Impulse);
+            playerAudio.PlayOneShot(hitSound, 0.4f);
+            currentLives -= damage;
+                       
+            }
             
-       }
-    }
+
+        //if(collision.gameObject.CompareTag("Obstacle")) {Vector3 awayFromObstacle =  transform.position - collision.gameObject.transform.position;playerRb.AddForce(awayFromObstacle * obstacleBounce, ForceMode.Impulse);}
+        }
 }
+
