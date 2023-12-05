@@ -20,6 +20,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] int damage = 1;
     [SerializeField] TextMeshProUGUI livesText;
     private Animator playerAnim;
+    public float specialAtkCooldown = 0;
+    public GameObject specialAtkPrefab;
+    public Transform specialAtkDirection;
+    public float specialSpeed = 30.0f;
 
 
     // Start is called before the first frame update
@@ -62,11 +66,20 @@ public class PlayerController : MonoBehaviour
        {
         transform.position = new Vector3(transform.position.x, transform.position.y, mapRange);
        }
+       if (Input.GetKeyDown(KeyCode.Space) && specialAtkCooldown <=0)
+       {
+        SpecialAtk();
+       }
+       if (specialAtkCooldown >0)
+       {
+        specialAtkCooldown -= Time.deltaTime;
+       }
        if(currentLives == 0)
         {
         Debug.Log("You have died");
         Destroy(gameObject);
         }
+        
     }
     void Move() //moves player on isometric plane
     {
@@ -79,6 +92,12 @@ public class PlayerController : MonoBehaviour
         transform.position += upMovement;
         playerAnim.Play("Run", 3, 0f);
         
+    }
+    void SpecialAtk()
+    {
+        Instantiate(specialAtkPrefab, specialAtkDirection.position, specialAtkDirection.rotation);
+        specialAtkPrefab.transform.Translate(Vector3.forward * Time.deltaTime * specialSpeed);
+        specialAtkCooldown = 10;
     }
     private void OnCollisionEnter(Collision collision) //play sound if player hit by enemy
     {

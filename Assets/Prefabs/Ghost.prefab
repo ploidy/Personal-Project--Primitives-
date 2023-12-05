@@ -166,6 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d20df08ae500d546b9cf2b3805a98a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lifespan: 0
 --- !u!114 &88791567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,7 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d11573a83eff184d85dd8f46f1290a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 11
+  speed: 12
   player: {fileID: 0}
   mapRange: 245
   rotationSpeed: 20

@@ -2,19 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FollowPlayer : MonoBehaviour
+public class SpecialCollisions : MonoBehaviour
 {
-    public GameObject player;
-    
+    public float lifespan;
     // Start is called before the first frame update
     void Start()
     {
         
     }
+
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3 (player.transform.position.x -55, player.transform.position.y + 45, player.transform.position.z -55);
+        Destroy (gameObject,lifespan);
     }
+
+        
+ 
 }
-    
