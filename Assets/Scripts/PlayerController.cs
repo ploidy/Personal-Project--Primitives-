@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.Networking.Types;
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public int currentLives = 3;
     [SerializeField] int damage = 1;
     [SerializeField] TextMeshProUGUI livesText;
+    private Animator playerAnim;
 
 
     // Start is called before the first frame update
@@ -26,6 +27,7 @@ public class PlayerController : MonoBehaviour
     {
         //playerRb = GetComponent<Rigidbody>();
         playerAudio = GetComponent<AudioSource>();
+        playerAnim = GetComponent<Animator>();
         
         //sets 'forward' & right to camera view
         forward = Camera.main.transform.forward;
@@ -60,7 +62,7 @@ public class PlayerController : MonoBehaviour
        {
         transform.position = new Vector3(transform.position.x, transform.position.y, mapRange);
        }
-       if(currentLives < 1)
+       if(currentLives == 0)
         {
         Debug.Log("You have died");
         Destroy(gameObject);
@@ -75,7 +77,7 @@ public class PlayerController : MonoBehaviour
         transform.forward = heading;
         transform.position += rightMovement;
         transform.position += upMovement;
-        
+        playerAnim.Play("Run", 3, 0f);
         
     }
     private void OnCollisionEnter(Collision collision) //play sound if player hit by enemy
