@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+
 using UnityEngine;
 
 public class DetectCollisions : MonoBehaviour
 {
     private GameManager gameManager;
-    public float lifespan;
+    public int scoreValue;
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -24,12 +25,12 @@ public class DetectCollisions : MonoBehaviour
         {
         Destroy(gameObject);
         Destroy(other.gameObject);
-        gameManager.UpdateScore(+1);
+        gameManager.UpdateScore(+scoreValue);
         }
         if (other.gameObject.tag == "SpecialAtk")
         {
         Destroy(gameObject);
-        gameManager.UpdateScore(+1);
+        gameManager.UpdateScore(+scoreValue);
         }
     }
 }

@@ -376,7 +376,9 @@ MonoBehaviour:
   player: {fileID: 0}
   mapRange: 245
   rotationSpeed: 20
-  scoreValue: 1
+  maxHP: 3
+  damage: 1
+  scoreValue: 3
 --- !u!114 &5239013103534938083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -390,6 +392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifespan: 0
+  scoreValue: 3
 --- !u!65 &6104875248478055771
 BoxCollider:
   m_ObjectHideFlags: 0

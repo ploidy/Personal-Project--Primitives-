@@ -11,7 +11,8 @@ public class EnemyController : MonoBehaviour
     public float mapRange = 245f;
     //public Transform target;
     public float rotationSpeed = 60.0f;
-    //[SerializeField] int currentLives = 1;
+    //[SerializeField] int maxHP;
+    //private int currentHP;
     //[SerializeField] int damage = 1;
     public int scoreValue;
     private GameManager gameManager;
@@ -24,7 +25,7 @@ public class EnemyController : MonoBehaviour
         enemyRb = GetComponent<Rigidbody>();
         player = GameObject.Find("Player");
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-    }
+     }
 
     // Update is called once per frame
     void Update()
@@ -61,8 +62,8 @@ public class EnemyController : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Player"))
         {
-            Destroy(gameObject);
-            gameManager.UpdateScore(scoreValue);
+        Destroy(gameObject);
+        gameManager.UpdateScore(scoreValue);
         }
     }
 

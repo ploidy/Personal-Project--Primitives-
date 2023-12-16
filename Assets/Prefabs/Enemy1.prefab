@@ -132,6 +132,9 @@ MonoBehaviour:
   player: {fileID: 8912474195674262392, guid: 1d2ea17cccb3ae24bb7b8e241ec2f4cf, type: 3}
   mapRange: 245
   rotationSpeed: 20
+  maxHP: 0
+  currentHP: 0
+  damage: 1
   scoreValue: 1
 --- !u!114 &-2521997743892650685
 MonoBehaviour:
@@ -145,3 +148,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d20df08ae500d546b9cf2b3805a98a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lifespan: 0

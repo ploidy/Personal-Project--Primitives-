@@ -10,6 +10,8 @@ public class wpnArrow : MonoBehaviour
     public Transform arrowDirection;
     public AudioClip arrowSound;
     private AudioSource arrowAudio;
+    public GameObject player;
+    
 
     
     //PlayerController playerController;
@@ -38,9 +40,5 @@ public class wpnArrow : MonoBehaviour
     {
         Instantiate(arrowPrefab, arrowDirection.position, arrowDirection.rotation);
         arrowAudio.PlayOneShot(arrowSound, 0.6f);
-
-        
-        
-
     }
 }

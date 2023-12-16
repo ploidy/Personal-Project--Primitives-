@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     public float obstacleBounce = 5.0f;
     public int maxLives = 3;
     public int currentLives = 3;
-    [SerializeField] int damage = 1;
+    int damage = 1;
     [SerializeField] TextMeshProUGUI livesText;
     private Animator playerAnim;
     public float specialAtkCooldown = 0;
@@ -96,7 +96,7 @@ public class PlayerController : MonoBehaviour
     void SpecialAtk()
     {
         Instantiate(specialAtkPrefab, specialAtkDirection.position, specialAtkDirection.rotation);
-        specialAtkPrefab.transform.Translate(Vector3.forward * Time.deltaTime * specialSpeed);
+        
         specialAtkCooldown = 10;
     }
     private void OnCollisionEnter(Collision collision) //play sound if player hit by enemy
