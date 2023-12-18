@@ -8,7 +8,7 @@ public class SpecialCollisions : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        lifespan = 3.0f;
     }
 
     // Update is called once per frame
@@ -17,6 +17,6 @@ public class SpecialCollisions : MonoBehaviour
         Destroy (gameObject,lifespan);
     }
 
-        
+
  
 }

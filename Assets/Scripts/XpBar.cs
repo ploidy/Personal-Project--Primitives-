@@ -16,7 +16,7 @@ public class XpBar : MonoBehaviour
 
     public void SetLevelTest(int level)
     {
-        levelText.text = "Level:" + level.ToString();
+        levelText.text = "Level: " + level.ToString();
     }
 }
 

@@ -128,3 +128,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifespan: 3
+  button: {fileID: 0}
+  upgradeMenu: {fileID: 0}

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using JetBrains.Annotations;
 
 
 public class PlayerController : MonoBehaviour
@@ -15,15 +16,17 @@ public class PlayerController : MonoBehaviour
     public AudioClip hitSound;
     //private Rigidbody playerRb;
     public float obstacleBounce = 5.0f;
-    public int maxLives = 3;
-    public int currentLives = 3;
+    public int currentLives;
     int damage = 1;
     [SerializeField] TextMeshProUGUI livesText;
     private Animator playerAnim;
-    public float specialAtkCooldown = 0;
+    public float specialAtkCooldown;
+    private float cooldownValue;
     public GameObject specialAtkPrefab;
     public Transform specialAtkDirection;
-    public float specialSpeed = 30.0f;
+    [SerializeField] GameObject livesButton;
+    [SerializeField] GameObject specialButton;
+    [SerializeField] UpgradeMenuManager upgradeMenu;
 
 
     // Start is called before the first frame update
@@ -39,6 +42,9 @@ public class PlayerController : MonoBehaviour
         forward = Vector3.Normalize(forward);
         right = Quaternion.Euler(new Vector3(0,90,0)) * forward;
 
+        currentLives = 3;
+        specialAtkCooldown = 0;
+        cooldownValue = 10;
     }
 
     // Update is called once per frame
@@ -96,8 +102,8 @@ public class PlayerController : MonoBehaviour
     void SpecialAtk()
     {
         Instantiate(specialAtkPrefab, specialAtkDirection.position, specialAtkDirection.rotation);
-        
-        specialAtkCooldown = 10;
+
+        specialAtkCooldown = cooldownValue;
     }
     private void OnCollisionEnter(Collision collision) //play sound if player hit by enemy
     {
@@ -107,10 +113,33 @@ public class PlayerController : MonoBehaviour
             playerAudio.PlayOneShot(hitSound, 0.4f);
             currentLives -= damage;
                        
-            }
-            
-
-        //if(collision.gameObject.CompareTag("Obstacle")) {Vector3 awayFromObstacle =  transform.position - collision.gameObject.transform.position;playerRb.AddForce(awayFromObstacle * obstacleBounce, ForceMode.Impulse);}
         }
+ 
+    }
+    public void ReplenishLives()
+    {
+        if (currentLives == 3)
+        {
+        livesButton.SetActive(false);
+        }
+        else 
+        {
+        currentLives += 1;
+        upgradeMenu.CloseMenu();
+        }
+    }
+    public void UpgradeSpecialAtk()
+    {
+        if (cooldownValue <= 5.0f)
+        {
+        specialButton.SetActive(false);
+        }
+        else 
+        {
+        cooldownValue -=  1.0f;
+        upgradeMenu.CloseMenu();
+        
+        }
+    }
 }
 

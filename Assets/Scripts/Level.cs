@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 
@@ -8,6 +9,8 @@ public class Level : MonoBehaviour
 int level = 1;
 int experience = 0;
 [SerializeField] XpBar xpBar;
+[SerializeField] UpgradeMenuManager upgradeMenu;
+
 
 int TO_LEVEL_UP
 {
@@ -34,10 +37,21 @@ public void CheckLevelUp()
 {
     if(experience >= TO_LEVEL_UP)
     {
-        experience -= TO_LEVEL_UP;
-        level += 1;
-        xpBar.SetLevelTest(level);
+        LevelUp();
     }
 }
 
+private void LevelUp()
+    {
+        experience -= TO_LEVEL_UP;
+        level += 1;
+        xpBar.SetLevelTest(level);
+        upgradeMenu.OpenMenu();
+    }
+
+
 }
+
+
+
+

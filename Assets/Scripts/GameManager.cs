@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
 public void GameOver()
 {
 
+    Time.timeScale = 0f;
     gameOverText.gameObject.SetActive(true);
     restartButton.gameObject.SetActive(true);
 }
