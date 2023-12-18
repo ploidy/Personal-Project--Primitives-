@@ -18,6 +18,8 @@ public class EnemyController : MonoBehaviour
     private GameManager gameManager;
     [SerializeField] int enemyXp;
 
+
+
     
    
     // Start is called before the first frame update
@@ -26,6 +28,7 @@ public class EnemyController : MonoBehaviour
         enemyRb = GetComponent<Rigidbody>();
         player = GameObject.Find("Player");
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
      }
 
     // Update is called once per frame
@@ -57,17 +60,18 @@ public class EnemyController : MonoBehaviour
         transform.position = new Vector3(transform.position.x, transform.position.y, mapRange);
        }
 
-
+    
     }
-    private void OnCollisionEnter(Collision collision) 
+    IEnumerator OnCollisionEnter(Collision collision) 
     {
         if(collision.gameObject.CompareTag("Player"))
         {
-        Destroy(gameObject);
-        player.GetComponent<Level>().AddXp(enemyXp);
-        //gameManager.UpdateScore(scoreValue);
+        speed = speed * 0.4f;
+        yield return new WaitForSeconds (2.0f);
+        speed = speed * 2.5f;
+       
+        //transform.position = new Vector3 (transform.position.x -5, transform.position.y, transform.position.z -5).normalized;
+        //player.GetComponent<Level>().AddXp(enemyXp);
         }
     }
-
-
 }

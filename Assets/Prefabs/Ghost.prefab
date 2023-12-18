@@ -100,7 +100,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 126
+  m_Constraints: 36
   m_CollisionDetection: 1
 --- !u!65 &88791565
 BoxCollider:
@@ -166,9 +166,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d20df08ae500d546b9cf2b3805a98a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreValue: 1
   player: {fileID: 0}
   enemyXp: 400
+  maxHp: 1
+  damage: 1
 --- !u!114 &88791567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,5 +186,4 @@ MonoBehaviour:
   player: {fileID: 0}
   mapRange: 245
   rotationSpeed: 20
-  scoreValue: 1
   enemyXp: 200

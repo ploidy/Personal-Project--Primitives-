@@ -1696,7 +1696,7 @@ Animator:
   m_Controller: {fileID: 0}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -1745,9 +1745,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d20df08ae500d546b9cf2b3805a98a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreValue: 2
   player: {fileID: 0}
   enemyXp: 400
+  maxHp: 2
+  damage: 1
 --- !u!114 &3331465065367395008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1764,7 +1765,6 @@ MonoBehaviour:
   player: {fileID: 0}
   mapRange: 245
   rotationSpeed: 20
-  scoreValue: 2
   enemyXp: 300
 --- !u!1 &4844041442351999165
 GameObject:

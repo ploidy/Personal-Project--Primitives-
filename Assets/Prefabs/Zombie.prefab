@@ -376,7 +376,6 @@ MonoBehaviour:
   player: {fileID: 0}
   mapRange: 245
   rotationSpeed: 20
-  scoreValue: 3
   enemyXp: 400
 --- !u!114 &5239013103534938083
 MonoBehaviour:
@@ -390,9 +389,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d20df08ae500d546b9cf2b3805a98a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreValue: 3
   player: {fileID: 0}
   enemyXp: 400
+  maxHp: 3
+  damage: 1
 --- !u!65 &6104875248478055771
 BoxCollider:
   m_ObjectHideFlags: 0
