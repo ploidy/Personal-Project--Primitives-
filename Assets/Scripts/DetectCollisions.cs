@@ -6,12 +6,15 @@ using UnityEngine;
 public class DetectCollisions : MonoBehaviour
 {
     private GameManager gameManager;
-    public int scoreValue;
-   
+    //public int scoreValue;
+    public GameObject player;
+    public int enemyXp;
+    
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        player = GameObject.Find("Player");
     }
 
     // Update is called once per frame
@@ -25,12 +28,14 @@ public class DetectCollisions : MonoBehaviour
         {
         Destroy(gameObject);
         Destroy(other.gameObject);
-        gameManager.UpdateScore(+scoreValue);
+        player.GetComponent<Level>().AddXp(enemyXp);
+        //gameManager.UpdateScore(+scoreValue);
         }
         if (other.gameObject.tag == "SpecialAtk")
         {
         Destroy(gameObject);
-        gameManager.UpdateScore(+scoreValue);
+        player.GetComponent<Level>().AddXp(enemyXp);
+        //gameManager.UpdateScore(+scoreValue);
         }
     }
 }

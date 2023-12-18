@@ -1745,8 +1745,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d20df08ae500d546b9cf2b3805a98a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifespan: 3
   scoreValue: 2
+  player: {fileID: 0}
+  enemyXp: 400
 --- !u!114 &3331465065367395008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1763,9 +1764,8 @@ MonoBehaviour:
   player: {fileID: 0}
   mapRange: 245
   rotationSpeed: 20
-  maxHP: 2
-  damage: 1
   scoreValue: 2
+  enemyXp: 300
 --- !u!1 &4844041442351999165
 GameObject:
   m_ObjectHideFlags: 0

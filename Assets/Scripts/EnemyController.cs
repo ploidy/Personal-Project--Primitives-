@@ -14,8 +14,9 @@ public class EnemyController : MonoBehaviour
     //[SerializeField] int maxHP;
     //private int currentHP;
     //[SerializeField] int damage = 1;
-    public int scoreValue;
+    //public int scoreValue;
     private GameManager gameManager;
+    [SerializeField] int enemyXp;
 
     
    
@@ -63,7 +64,8 @@ public class EnemyController : MonoBehaviour
         if(collision.gameObject.CompareTag("Player"))
         {
         Destroy(gameObject);
-        gameManager.UpdateScore(scoreValue);
+        player.GetComponent<Level>().AddXp(enemyXp);
+        //gameManager.UpdateScore(scoreValue);
         }
     }
 

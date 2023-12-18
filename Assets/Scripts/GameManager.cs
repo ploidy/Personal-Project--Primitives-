@@ -9,10 +9,10 @@ using Unity.VisualScripting;
 public class GameManager : MonoBehaviour
 {
     //[SerializeField] TextMeshProUGUI livesText;
-    [SerializeField] TextMeshProUGUI scoreText;
+    //[SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI gameOverText;
     public Button restartButton;
-    private int score;
+    //private int score;
     public bool isGameActive;
     public GameObject player;
 
@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         isGameActive = true;
-        score = 0;
+        //score = 0;
     }
 
     // Update is called once per frame
@@ -31,11 +31,11 @@ public class GameManager : MonoBehaviour
         {
             GameOver();
         }
-    }
-    public void UpdateScore(int scoreToAdd)
-    {
-    score += scoreToAdd;
-    scoreText.text = "Score: " + score;
+    //}
+    //public void UpdateScore(int scoreToAdd)
+    //{
+    //score += scoreToAdd;
+    //scoreText.text = "Score: " + score;
 
 }
 
