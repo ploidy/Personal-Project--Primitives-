@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using Unity.VisualScripting;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1f;
         isGameActive = true;
         //score = 0;
     }
@@ -45,9 +46,11 @@ public void GameOver()
     Time.timeScale = 0f;
     gameOverText.gameObject.SetActive(true);
     restartButton.gameObject.SetActive(true);
+    isGameActive = false;
 }
 public void RestartGame()
 {
-    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    SceneManager.LoadScene("HordeSurvivorsScene");
 }
+
 }

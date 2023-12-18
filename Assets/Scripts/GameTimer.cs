@@ -1,7 +1,7 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
+using JetBrains.Annotations;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,9 +9,17 @@ public class GameTimer : MonoBehaviour
 {
     public TextMeshProUGUI timerText;
     float gameTimer = 0f;
-    private TimeSpan timePlaying;
-    public GameObject Player;
+    [SerializeField] private TimeSpan timePlaying;
+    //public GameObject Player;
+    [SerializeField] GameObject winMenu;
+    PauseManager pauseManager;
+    
 
+
+    private void Awake()
+    {
+        pauseManager = GetComponent<PauseManager>();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -21,5 +29,16 @@ public class GameTimer : MonoBehaviour
         string gameTimerStr = "Time:" + timePlaying.ToString("mm':'ss");
         timerText.text = gameTimerStr;
 
-    }
+
+       if (gameTimer >= 300f)
+        {
+            GameWon();
+        }
+}
+public void GameWon()
+{
+        pauseManager.PauseGame();
+        winMenu.SetActive(true);
+}
+
 }

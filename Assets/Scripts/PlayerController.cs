@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("You have died");
         Destroy(gameObject);
         }
-        
+       
     }
     void Move() //moves player on isometric plane
     {
@@ -118,11 +118,11 @@ public class PlayerController : MonoBehaviour
     }
     public void ReplenishLives()
     {
-        if (currentLives == 3)
+    if (currentLives >= 3)
         {
         livesButton.SetActive(false);
         }
-        else 
+    if (currentLives < 3)
         {
         currentLives += 1;
         upgradeMenu.CloseMenu();
