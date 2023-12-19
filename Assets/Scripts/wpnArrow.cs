@@ -49,6 +49,7 @@ public class wpnArrow : MonoBehaviour
     {
         if (timeToAttack <= 1.0f)
         {
+            timeToAttack = 1.0f;
             button.SetActive(false);
         }
         else 

@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] TextMeshProUGUI cDwnText;
     //private Animator playerAnim;
     public float specialAtkCooldown;
-    [SerializeField] float cooldownValue;
+    [SerializeField] private float cooldownValue;
     public GameObject specialAtkPrefab;
     public Transform specialAtkDirection;
     [SerializeField] GameObject livesButton;
