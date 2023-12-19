@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using JetBrains.Annotations;
 
 
 public class PlayerController : MonoBehaviour
@@ -19,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public int currentLives;
     int damage = 1;
     [SerializeField] TextMeshProUGUI livesText;
+    [SerializeField] TextMeshProUGUI cDwnText;
     private Animator playerAnim;
     public float specialAtkCooldown;
     private float cooldownValue;
@@ -27,6 +27,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject livesButton;
     [SerializeField] GameObject specialButton;
     [SerializeField] UpgradeMenuManager upgradeMenu;
+    public GameObject specialIndicator;
+    public bool hasSpecial;
+    //public Animator anim;
+
 
 
     // Start is called before the first frame update
@@ -45,12 +49,15 @@ public class PlayerController : MonoBehaviour
         currentLives = 3;
         specialAtkCooldown = 0;
         cooldownValue = 10;
+        hasSpecial = true;
     }
 
     // Update is called once per frame
     void Update()
     {
        livesText.SetText("Lives: " + currentLives);
+       
+       cDwnText.SetText("CoolDwn: " + cooldownValue + " (MAX 5)");
        if (Input.anyKey) //any input invokes Move method
        {
             Move();
@@ -78,7 +85,15 @@ public class PlayerController : MonoBehaviour
        }
        if (specialAtkCooldown >0)
        {
+        hasSpecial = false;
+        specialIndicator.gameObject.SetActive(false);
         specialAtkCooldown -= Time.deltaTime;
+       }
+       if (specialAtkCooldown <=0)
+       {
+        hasSpecial = true;
+        specialIndicator.gameObject.SetActive(true);
+        specialIndicator.transform.position = transform.position + new Vector3 (0,9.5f,0);
        }
        if(currentLives == 0)
         {
@@ -96,7 +111,7 @@ public class PlayerController : MonoBehaviour
         transform.forward = heading;
         transform.position += rightMovement;
         transform.position += upMovement;
-        playerAnim.Play("Run", 3, 0f);
+        //playerAnim.Play("Run", 3, 0f);
         
     }
     void SpecialAtk()
@@ -138,7 +153,6 @@ public class PlayerController : MonoBehaviour
         {
         cooldownValue -=  1.0f;
         upgradeMenu.CloseMenu();
-        
         }
     }
 }

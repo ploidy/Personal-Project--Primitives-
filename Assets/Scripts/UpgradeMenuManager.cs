@@ -6,12 +6,13 @@ public class UpgradeMenuManager : MonoBehaviour
 {
     [SerializeField] GameObject menu;
     PauseManager pauseManager;
-    PlayerController playerController;
+    [SerializeField] GameObject livesButton;
+    
     // Start is called before the first frame update
     private void Awake()
     {
         pauseManager = GetComponent<PauseManager>();
-        playerController = GetComponent<PlayerController>();
+
     }
 
     // Update is called once per frame
@@ -23,6 +24,7 @@ public class UpgradeMenuManager : MonoBehaviour
     {
         pauseManager.PauseGame();
         menu.SetActive(true);
+        livesButton.SetActive(true);
     }
     public void CloseMenu()
     {

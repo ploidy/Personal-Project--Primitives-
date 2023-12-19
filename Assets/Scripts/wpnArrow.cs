@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class wpnArrow : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class wpnArrow : MonoBehaviour
     public GameObject player;
     [SerializeField] GameObject button;
     [SerializeField] UpgradeMenuManager upgradeMenu;
+    [SerializeField] TextMeshProUGUI atkSpdText;
     
     //PlayerController playerController;
     // Start is called before the first frame update
@@ -27,6 +29,7 @@ public class wpnArrow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        atkSpdText.SetText("AtkSpd: " + timeToAttack + " (MAX 1)");
         //sets timer for firing arrows
         if(timer < timeToAttack)
         {
