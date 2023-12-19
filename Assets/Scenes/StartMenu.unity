@@ -582,8 +582,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Horde Surivors - How to play\n\n<color=\"yellow\">WASD</color> to move\n<color=\"yellow\">Space</color>
-    for Special Ability: \n<i>10 sec cooldown, 3 sec up time</I>\n\nUpgrade attack/ability
-    on level up\n\nSurvive for <color=\"yellow\">5 mins</color> to Win! Good Luck!"
+    for Special Ability: \n<i>10 sec cooldown, 3 sec up time</I>\n<color=\"yellow\">Esc</color>
+    to pause/Return to Start Menu\n\nUpgrade attack/ability on level up\n\nSurvive
+    for <color=\"yellow\">5 mins</color> to Win! Good Luck!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c313f9acc17f7694482f4765b0140900, type: 2}
   m_sharedMaterial: {fileID: -3210416568688250710, guid: c313f9acc17f7694482f4765b0140900, type: 2}
@@ -610,8 +611,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 34
-  m_fontSizeBase: 34
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

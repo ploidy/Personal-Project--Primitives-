@@ -42,7 +42,7 @@ public class wpnArrow : MonoBehaviour
     void SpawnArrow() //spawns arrow 
     {
         Instantiate(arrowPrefab, arrowDirection.position, arrowDirection.rotation);
-        arrowAudio.PlayOneShot(arrowSound, 0.8f);
+        arrowAudio.PlayOneShot(arrowSound, 1.0f);
     }
 
     public void UpgradeArrow()

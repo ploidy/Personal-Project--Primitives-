@@ -16,7 +16,7 @@ int TO_LEVEL_UP
 {
     get
     {
-        return level * 1000;
+        return level * 900;
     }
 }
 
