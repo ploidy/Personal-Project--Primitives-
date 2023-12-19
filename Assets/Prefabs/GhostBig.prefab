@@ -316,7 +316,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   enemy: {fileID: 8839434874158873321}
-  enemyXp: 300
+  enemyXp: 350
   maxHp: 2
   damage: 1
   deathParticle: {fileID: 3200526301404837529}
