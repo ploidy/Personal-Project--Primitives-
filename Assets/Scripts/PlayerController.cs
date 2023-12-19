@@ -124,7 +124,7 @@ public class PlayerController : MonoBehaviour
         if(collision.gameObject.CompareTag("Enemy"))
         {
             Debug.Log("Player Hit!");
-            playerAudio.PlayOneShot(hitSound, 0.4f);
+            playerAudio.PlayOneShot(hitSound, 0.2f);
             currentLives -= damage;
                        
         }
