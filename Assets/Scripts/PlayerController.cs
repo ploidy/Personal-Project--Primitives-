@@ -11,17 +11,17 @@ public class PlayerController : MonoBehaviour
     public Vector3 forward;
     Vector3 right;
     public float mapRange = 245;
-    private AudioSource playerAudio;
+    [SerializeField] AudioSource playerAudio;
     public AudioClip hitSound;
     //private Rigidbody playerRb;
     public float obstacleBounce = 5.0f;
     public int currentLives;
-    int damage = 1;
+    [SerializeField] int damage = 1;
     [SerializeField] TextMeshProUGUI livesText;
     [SerializeField] TextMeshProUGUI cDwnText;
-    private Animator playerAnim;
+    //private Animator playerAnim;
     public float specialAtkCooldown;
-    private float cooldownValue;
+    [SerializeField] float cooldownValue;
     public GameObject specialAtkPrefab;
     public Transform specialAtkDirection;
     [SerializeField] GameObject livesButton;
@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
     {
         //playerRb = GetComponent<Rigidbody>();
         playerAudio = GetComponent<AudioSource>();
-        playerAnim = GetComponent<Animator>();
+        //playerAnim = GetComponent<Animator>();
         
         //sets 'forward' & right to camera view
         forward = Camera.main.transform.forward;
@@ -111,7 +111,6 @@ public class PlayerController : MonoBehaviour
         transform.forward = heading;
         transform.position += rightMovement;
         transform.position += upMovement;
-        //playerAnim.Play("Run", 3, 0f);
         
     }
     void SpecialAtk()
@@ -147,6 +146,7 @@ public class PlayerController : MonoBehaviour
     {
         if (cooldownValue <= 5.0f)
         {
+        cooldownValue = 5.0f;
         specialButton.SetActive(false);
         }
         else 

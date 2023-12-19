@@ -8,20 +8,18 @@ public class wpnArrow : MonoBehaviour
 {
     public float timeToAttack;
     public GameObject arrowPrefab;
-    float timer;
+    [SerializeField]float timer;
     public Transform arrowDirection;
     public AudioClip arrowSound;
-    private AudioSource arrowAudio;
+    [SerializeField] AudioSource arrowAudio;
     public GameObject player;
     [SerializeField] GameObject button;
     [SerializeField] UpgradeMenuManager upgradeMenu;
     [SerializeField] TextMeshProUGUI atkSpdText;
     
-    //PlayerController playerController;
     // Start is called before the first frame update
     void Start()
     {
-        //playerController = GetComponentInParent<PlayerController>();
         arrowAudio = GetComponent<AudioSource>();
         timeToAttack = 2f;
     }
@@ -30,6 +28,7 @@ public class wpnArrow : MonoBehaviour
     void Update()
     {
         atkSpdText.SetText("AtkSpd: " + timeToAttack + " (MAX 1)");
+       
         //sets timer for firing arrows
         if(timer < timeToAttack)
         {
@@ -56,7 +55,6 @@ public class wpnArrow : MonoBehaviour
         {
         timeToAttack -= 0.2f;
         upgradeMenu.CloseMenu();
-        
         }
     }
 }

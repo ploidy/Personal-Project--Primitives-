@@ -1596,12 +1596,15 @@ MonoBehaviour:
   speed: 15
   forward: {x: 0, y: 0, z: 0}
   mapRange: 245
+  playerAudio: {fileID: 0}
   hitSound: {fileID: 8300000, guid: b45ff6afa476d8d47ac3af0390b65a74, type: 3}
   obstacleBounce: 1000
   currentLives: 3
+  damage: 1
   livesText: {fileID: 45542767}
   cDwnText: {fileID: 742221810}
   specialAtkCooldown: 0
+  cooldownValue: 0
   specialAtkPrefab: {fileID: 4565693514685133538, guid: 8e729cafd7e6b304b9d4f221715c7ac5, type: 3}
   specialAtkDirection: {fileID: 526447267}
   livesButton: {fileID: 1381487387}
@@ -1649,8 +1652,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToAttack: 2
   arrowPrefab: {fileID: 7651639319005485761, guid: 462dcb6fa40c4a540a13eed21ffd90b7, type: 3}
+  timer: 0
   arrowDirection: {fileID: 322636231}
   arrowSound: {fileID: 8300000, guid: b48ab7535c0a91540ba4819dd8738618, type: 3}
+  arrowAudio: {fileID: 0}
   player: {fileID: 526447262}
   button: {fileID: 790101699}
   upgradeMenu: {fileID: 274294461}
@@ -5229,7 +5234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab:
   - {fileID: 2585536690994013582, guid: a31836bb6b3c29743997f30bdf25433d, type: 3}
-  - {fileID: 4591303956234633827, guid: a6fe504c946b66e4393a9c67229570e0, type: 3}
+  - {fileID: 8839434874158873321, guid: 2ab5b6752c2e4164784e5c0b5209227a, type: 3}
   - {fileID: 3632709695007814513, guid: e50a6aa9e9e575944beb5e9a6a69b128, type: 3}
   player: {fileID: 526447262}
   spawnRange: 50
@@ -6444,8 +6449,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToAttack: 1.75
   arrowPrefab: {fileID: 7651639319005485761, guid: 462dcb6fa40c4a540a13eed21ffd90b7, type: 3}
+  timer: 0
   arrowDirection: {fileID: 526447267}
   arrowSound: {fileID: 8300000, guid: b48ab7535c0a91540ba4819dd8738618, type: 3}
+  arrowAudio: {fileID: 0}
   player: {fileID: 526447262}
   button: {fileID: 0}
   upgradeMenu: {fileID: 0}

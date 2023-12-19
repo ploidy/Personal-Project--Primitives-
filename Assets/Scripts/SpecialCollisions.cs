@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpecialCollisions : MonoBehaviour
 {
-    public float lifespan;
+    [SerializeField] float lifespan;
     // Start is called before the first frame update
     void Start()
     {

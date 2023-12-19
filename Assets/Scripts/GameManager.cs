@@ -8,11 +8,8 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    //[SerializeField] TextMeshProUGUI livesText;
-    //[SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI gameOverText;
     public Button restartButton;
-    //private int score;
     public bool isGameActive;
     public GameObject player;
 
@@ -22,7 +19,6 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         isGameActive = true;
-        //score = 0;
     }
 
     // Update is called once per frame
@@ -32,11 +28,6 @@ public class GameManager : MonoBehaviour
         {
             GameOver();
         }
-    //}
-    //public void UpdateScore(int scoreToAdd)
-    //{
-    //score += scoreToAdd;
-    //scoreText.text = "Score: " + score;
 
 }
 

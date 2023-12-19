@@ -8,6 +8,7 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] GameObject menu;
     PauseManager pauseManager;
+    
     // Start is called before the first frame update
     void Start()
     {

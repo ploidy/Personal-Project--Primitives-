@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class DetectCollisions : MonoBehaviour
 {
-    private GameManager gameManager;
-    //public int scoreValue;
+    //private GameManager gameManager;
     public GameObject player;
     public GameObject enemy;
     public int enemyXp;
@@ -14,7 +13,7 @@ public class DetectCollisions : MonoBehaviour
     public int damage;
     public ParticleSystem deathParticle;
     public GameObject smokeObject;
-    GameObject smokeObjectTemp;
+    [SerializeField] GameObject smokeObjectTemp;
     public float smokeTime = 0.5f;
 
     
@@ -22,7 +21,7 @@ public class DetectCollisions : MonoBehaviour
 
     void Start()
     {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        //gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         player = GameObject.Find("Player");
         damage = 1;
         
@@ -31,7 +30,7 @@ public class DetectCollisions : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(maxHp <= 0)
+        if(maxHp <= 0) //enemy destroyed + particle effect
         {
         Destroy(gameObject);
         smokeObjectTemp = Instantiate(smokeObject);
@@ -40,25 +39,18 @@ public class DetectCollisions : MonoBehaviour
         player.GetComponent<Level>().AddXp(enemyXp);
         }
     }
-    void OnTriggerEnter(Collider other) { //detroy arrow and enemy on collision
+    void OnTriggerEnter(Collider other) { //enemy takes damage
         
         if (other.gameObject.tag == "Arrow")
         {
-        //Destroy(gameObject);
         maxHp -= damage;
         deathParticle.Play();
         Destroy(other.gameObject);
-
-        //player.GetComponent<Level>().AddXp(enemyXp);
-        //gameManager.UpdateScore(+scoreValue);
         }
         if (other.gameObject.tag == "SpecialAtk")
         {
-        //Destroy(gameObject);
         maxHp -= damage * 2;
         deathParticle.Play();
-        //player.GetComponent<Level>().AddXp(enemyXp);
-        //gameManager.UpdateScore(+scoreValue);
         }
         if (other.gameObject.tag == "Player")
         {
